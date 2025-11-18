@@ -202,11 +202,11 @@ const translations = {
 };
 
 const cvByLang = {
-  en: "pdfs/cv/georgia-cv-en.pdf",
-  pt: "pdfs/cv/georgia-cv-pt.pdf",
-  es: "pdfs/cv/georgia-cv-es.pdf",
-  nl: "pdfs/cv/georgia-cv-nl.pdf",
-  fr: "pdfs/cv/georgia-cv-fr.pdf",
+  en: "pdfs/georgia-cv-en.pdf",
+  pt: "pdfs/georgia-cv-en.pdf",
+  es: "pdfs/georgia-cv-en.pdf",
+  nl: "pdfs/georgia-cv-en.pdf",
+  fr: "pdfs/georgia-cv-en.pdf",
 };
 
 
