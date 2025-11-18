@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <title>Georgia Fonseca Machine Leaning & Software Engineer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="card">
+            <div class="card-element card-content-left">
+                <div class="card-top-brand">
+                    <h1>Georgia Fonseca</h1>
+                </div>
+                <section style="padding-top: 1rem; font-size: 1.2; padding-top: 2rem; text-align: justify;">
+                    Welcome, my name is Georgia Fonseca. I am a machine learning and software engineer specializing
+                    in generative AI and NLP, with experience in diverse projects. 
+                    
+                    I am proficient in Python, JavaScript, html, CSS, R, and I am also expereinced in Django and Kotlin.
+               
+                </section>
+            </div>
+            <div class="card-element card-content-right">
+                <div class="projects-list">
+                    <div class="projects-title">
+                        <span>Projects</span>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/summarization.html"><span>RAG and Machine Summarization Pipelines</span></a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/compvision_robot.html"><span>Integration of Computer Vision and Reinforcement Learning for Teaching Robots to Move Independently</span></a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/eeg_chatgpt.html"><span>Modulating Chat GPT with emotional data from EEG</span></a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/web_phonology.html"><span>Interactive Website for Phonology Students</span></a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/acoustic_analysis.html"><span>Acoustic Analysis of Accent in Second-Language English Speakers</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-element card-bottom">
+                <div class="projects-elements">
+                    <a href="./archive.html"><span>ARCHIVE</span></a>
+                </div>
+<!--                 <div class="projects-elements">
+                    <a href="./pdfs/CV.pdf" target="_blank"><span>CV</span></a>
+                </div> -->
+                <div class="projects-elements">
+                    <a id="vis_button" style="display:none; font-size:0.9rem;"
+                        onclick="localStorage.setItem('visitedTimes', 0); this.style.display = 'none';"><span>TURN
+                            TYPING ANIMATION ON</span></a>
+                </div>
+                <div class="card-bottom-buttons">
+                    <span><a aria-label="Gmail" href="mailto: info@georgiafonseca.com" target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="GMAIL LOGO."
+                                srcset="https://mailmeteor.com/logos/assets/SVG/Gmail_Logo.svg">
+                        </a>
+                    </span>
+    
+                    <span><a aria-label="LinkedIn" href="linked in linkk " target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="LINKEDIN LGO"
+                                srcset="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
