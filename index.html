@@ -11,61 +11,134 @@
 
     <title>Georgia Fonseca Machine Leaning & Software Engineer</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources/css/style.css">
 </head>
 
 <body>
     <div class="main-container">
         <div class="card">
+            <!-- LEFT --------------------------------------------------------------------------------------------- 
+            ------------------------------------------------------------------------------------------------------------------------------- 
+            LEFT --------------------------------------------------------------------------------------------- -->
             <div class="card-element card-content-left">
                 <div class="card-top-brand">
-                    <h1>Georgia Fonseca</h1>
+                     <h1 data-i18n="name_title">Georgia Fonseca</h1>
+                    <small data-i18n="name_subtitle">MSc in Artificial Intelligence</small>
                 </div>
+
                 <section style="padding-top: 1rem; font-size: 1.2; padding-top: 2rem; text-align: justify;">
-                    Welcome, my name is Georgia Fonseca. I am a machine learning and software engineer specializing
-                    in generative AI and NLP, with experience in diverse projects. 
-                    
-                    I am proficient in Python, JavaScript, html, CSS, R, and I am also expereinced in Django and Kotlin.
-               
-                </section>
-            </div>
-            <div class="card-element card-content-right">
-                <div class="projects-list">
-                    <div class="projects-title">
-                        <span>Projects</span>
-                    </div>
-                    <div class="projects-elements">
-                        <a href="./projects/summarization.html"><span>RAG and Machine Summarization Pipelines</span></a>
-                    </div>
-                    <div class="projects-elements">
-                        <a href="./projects/compvision_robot.html"><span>Integration of Computer Vision and Reinforcement Learning for Teaching Robots to Move Independently</span></a>
-                    </div>
-                    <div class="projects-elements">
-                        <a href="./projects/eeg_chatgpt.html"><span>Modulating Chat GPT with emotional data from EEG</span></a>
-                    </div>
-                    <div class="projects-elements">
-                        <a href="./projects/web_phonology.html"><span>Interactive Website for Phonology Students</span></a>
-                    </div>
-                    <div class="projects-elements">
-                        <a href="./projects/acoustic_analysis.html"><span>Acoustic Analysis of Accent in Second-Language English Speakers</span></a>
-                    </div>
+                    <p data-i18n="intro_1">Welcome to my portfolio,</p>
+                    <p data-i18n="intro_2">
+                        I’m Georgia Fonseca, a machine learning and software engineer specializing in generative AI.
+                        My work ranges from research-driven prototypes to production systems and end-to-end application development.
+                    </p>
+                    <p data-i18n="intro_3">
+                        I am proficient in Python, JavaScript, HTML, CSS, and R, and I am also experienced in SQL and Django.
+                        Currently, I am developing skills in Node.js and React.
+                    </p>
+                </section>             
+
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;">
+                    <span></span>
+                    <a id="cv-link" target="_blank" rel="noopener">Download CV</a>
                 </div>
             </div>
 
-            <div class="card-element card-bottom">
-                <div class="projects-elements">
-                    <a href="./archive.html"><span>ARCHIVE</span></a>
+              <!-- RIGHT --------------------------------------------------------------------------------------------- 
+            ------------------------------------------------------------------------------------------------------------------------------- 
+            RICHT --------------------------------------------------------------------------------------------- -->
+
+            <div class="card-element card-content-right">
+
+                <div class="projects-list">
+                    <div class="projects-title">
+                        <span data-i18n="projects_title">Projects</span>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/summarization.html">
+                            <span data-i18n="project_1">
+                                Machine Summarization Pipelines with Different Transformer Models
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/compvision_robot.html">
+                            <span data-i18n="project_2">
+                                Integration of Computer Vision and Reinforcement Learning for Teaching Robots to Navigate a Room
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/eeg_chatgpt.html">
+                            <span data-i18n="project_3">
+                                Modulating Chat GPT with Mental Data from EEG
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/web_phonology.html">
+                            <span data-i18n="project_4">
+                                Interactive Website for Phonology Students
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/acoustic_analysis.html">
+                            <span data-i18n="project_5">
+                                Acoustic Analysis of Accent in Second-Language English Speakers
+                            </span>
+                        </a>
+                        <br>
+                    </div>
                 </div>
-<!--                 <div class="projects-elements">
-                    <a href="./pdfs/CV.pdf" target="_blank"><span>CV</span></a>
-                </div> -->
+
+
+
+                <div class="education-and-certificates"></div>
+                    <div class="projects-title">
+                        <span data-i18n="education_title">Education</span>
+                    </div>
+                    <p data-i18n="education_msc">
+                        MSc in Artificial Intelligence at Vrije University Amsterdam
+                    </p>
+                    <p data-i18n="education_ba">
+                        BA in Cognitive Linguistics, minor in AI at Leiden University
+                    </p>
+                </div>
+
+                   
+  <!-- BOTTOM BAR --------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------- 
+ BOTTOM BAR --------------------------------------------------------------------------------------------- -->
+
+            <div class="card-element card-bottom">
+
+                <!-- LANG SWITCHER -->
+                <div class="lang-switcher" aria-label="Select language">
+                    <button type="button" class="lang-option" data-lang="en">EN</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="nl">NL</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="pt">PT</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="es">ES</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="fr">FR</button>
+                </div>
+                
+
+<!--                 
                 <div class="projects-elements">
                     <a id="vis_button" style="display:none; font-size:0.9rem;"
                         onclick="localStorage.setItem('visitedTimes', 0); this.style.display = 'none';"><span>TURN
                             TYPING ANIMATION ON</span></a>
                 </div>
+
+
+                <!-- ICON BUTTONS -->
                 <div class="card-bottom-buttons">
-                    <span><a aria-label="Gmail" href="mailto: info@georgiafonseca.com" target="_blank"
+                    <span><a aria-label="Gmail" href="mailto: corrals_produire1q@icloud.com" target="_blank"
                             style="text-decoration: none;">
                             <img class="image-content  lazy-load" alt="GMAIL LOGO."
                                 srcset="https://mailmeteor.com/logos/assets/SVG/Gmail_Logo.svg">
@@ -76,6 +149,13 @@
                             style="text-decoration: none;">
                             <img class="image-content  lazy-load" alt="LINKEDIN LGO"
                                 srcset="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg">
+                        </a>
+                    </span>
+
+                    <span><a aria-label="LinkedIn" href="linked in linkk " target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="LINKEDIN LGO"
+                                srcset="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
                         </a>
                     </span>
                 </div>

@@ -1,0 +1,646 @@
+/* Root / global ------------------------------------------------------------ */
+
+:root {
+    --bg: #05060a;
+    --bg-elevated: rgba(10, 12, 20, 0.95);
+    --bg-elevated-soft: rgba(15, 18, 30, 0.95);
+    --accent: #5ef2c5;
+    --accent-soft: rgba(94, 242, 197, 0.18);
+    --accent-strong: #37c39b;
+    --font-size-base: 1.25rem; /* change only this to scale the whole site */
+    --text-main: #f5f7ff;
+    --text-soft: #a7b0d0;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --radius-sm: 999px;
+    --transition-fast: 160ms ease-out;
+    --transition-med: 220ms ease-out;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {font-size: var(--font-size-base);  /* this makes 1rem = --font-size-base */
+},
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: radial-gradient(circle at top left, #141b33 0, #05060a 48%, #000 100%);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout ------------------------------------------------------------------- */
+
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.card {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+    grid-template-rows: auto auto; /* row 1: left/right, row 2: bottom */
+    gap: 1.75rem;
+    padding: 1.75rem;
+    border-radius: calc(var(--radius-lg) + 4px);
+    background: radial-gradient(circle at top left, rgba(94, 242, 197, 0.07) 0, transparent 50%) var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(24px) saturate(120%);
+    
+}
+
+/* Card elements ------------------------------------------------------------ */
+
+.card-element {
+    background: linear-gradient(145deg, var(--bg-elevated) 0%, var(--bg-elevated-soft) 60%);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+/* slight accent line on left side */
+.card-element::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border-left: 1px solid rgba(94, 242, 197, 0.12);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.card-content-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.card-content-right {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.card-bottom {
+    grid-column: 1 / -1; /* span both columns */
+    grid-row: 2 / 3;     /* force it to the second row */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.75rem;
+}
+
+.card-archive {
+    grid-column: 1 / -1;
+}
+
+/* Branding / intro --------------------------------------------------------- */
+
+.card-top-brand h1 {
+    margin: 0;
+    font-size: 1.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.card-top-brand {
+    position: relative;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+.card-top-brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.intro-text {
+    padding-top: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-soft);
+    text-align: justify;
+}
+
+.intro-text strong {
+    color: var(--text-main);
+}
+
+
+
+/* Projects list --------------------------------------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------------------------------------------------ 
+Projects list -------------------------------------------------------------------------------------------- */
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.projects-title {
+    font-size: 1.15rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.projects-title h2,
+.projects-title span {
+    margin: 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+
+.projects-elements {
+    position: relative;
+    padding: 0.45rem 0;
+}
+
+.projects-elements a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    transition: color var(--transition-med), transform var(--transition-fast), text-shadow var(--transition-fast);
+}
+
+.projects-elements a span {
+    position: relative;
+}
+
+.projects-elements a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    width: 0;
+    height: 1px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transition: width var(--transition-med);
+}
+
+/* subtle “signal” line */
+.projects-elements::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 0;
+    background: var(--accent-soft);
+    transform: translateY(-50%);
+    transition: height var(--transition-med);
+}
+
+.projects-elements a:hover span::after,
+.projects-elements a:focus-visible span::after {
+    width: 100%;
+}
+
+.projects-elements a:hover,
+.projects-elements a:focus-visible {
+    color: var(--accent);
+    transform: translateX(3px);
+    text-shadow: 0 0 8px rgba(94, 242, 197, 0.4);
+}
+
+.projects-elements:hover::before,
+.projects-elements:focus-within::before {
+    height: 82%;
+}
+
+/* Project detail text ------------------------------------------------------ */
+
+.project-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-top: 1.75rem;
+    color: var(--text-soft);
+    text-align: justify;
+}
+
+.project-text p {
+    margin-top: 0;
+    margin-bottom: 0.85rem;
+}
+
+
+.education-and-certificates {
+    margin-top: 2rem;        /* pushes it below projects */
+    padding-top: 1rem;       /* optional spacing inside */
+    border-top: 1px solid var(--border-subtle); /* optional visual separation */
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.education-and-certificates span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+
+/* Bottom bar --------------------------------------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------------------------------------------------ 
+bottom bar -------------------------------------------------------------------------------------------- */
+
+.card-bottom-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-bottom a span {
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+}
+
+.card-bottom .projects-elements a {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Icon buttons ------------------------------------------------------------- */
+
+.image-content {
+    width: 26px;
+    height: 26px;
+    display: block;
+    filter: grayscale(0.1) brightness(1.15);
+    opacity: 0.85;
+    transition: transform var(--transition-med), opacity var(--transition-fast), filter var(--transition-med);
+}
+
+.card-bottom-buttons a:hover .image-content,
+.card-bottom-buttons a:focus-visible .image-content {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.04);
+    filter: grayscale(0) drop-shadow(0 0 10px rgba(94, 242, 197, 0.6));
+}
+
+/* Typing toggle button ----------------------------------------------------- */
+
+#vis_button {
+    border: none;
+    background: transparent;
+    color: var(--text-soft);
+    font-family: inherit;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.2rem 0;
+    transition: color var(--transition-med), opacity var(--transition-med), transform var(--transition-fast);
+}
+
+#vis_button:hover,
+#vis_button:focus-visible {
+    color: var(--accent);
+    transform: translateY(-1px);
+    opacity: 1;
+}
+
+/* Links / focus states ----------------------------------------------------- */
+
+a {
+    color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* Translations Language Switcher ----------------------------- --------------------------------------------------------------- 
+Translations Language Switcher -------------------------------- ------------------------------------------------------------ */
+
+
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+
+.lang-option {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: color var(--transition-med), opacity var(--transition-med), transform var(--transition-fast);
+}
+
+.lang-option:hover,
+.lang-option:focus-visible {
+    color: var(--accent);
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.lang-option.is-active {
+    color: var(--accent);
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(94, 242, 197, 0.5);
+}
+
+.lang-separator {
+    opacity: 0.5;
+}
+
+/* General navigation  ------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------------------------------------------------ 
+General navigation  ------------------------------------------------------ */
+
+/* Scrollbar (desktop) ------------------------------------------------------ */ 
+
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #05060a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(94, 242, 197, 0.22);
+        border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(94, 242, 197, 0.4);
+    }
+}
+
+/* Responsive --------------------------------------------------------------- */
+
+@media (max-width: 840px) {
+    .main-container {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+        padding: 1.4rem;
+    }
+
+    .card-content-left,
+    .card-content-right,
+    .card-archive {
+        grid-column: 1 / -1;
+    }
+
+    .card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-top-brand h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .card {
+        padding: 1.2rem;
+        gap: 1.25rem;
+    }
+
+    .card-element {
+        padding: 1.2rem 1.3rem;
+    }
+
+    .intro-text,
+    .project-text {
+        font-size: 0.95rem;
+    }
+
+    .card-bottom-buttons {
+        gap: 0.7rem;
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <title>Georgia Fonseca Machine Leaning & Software Engineer</title>
+
+    <link rel="stylesheet" href="./resources/css/style.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="card">
+            <!-- LEFT --------------------------------------------------------------------------------------------- 
+            ------------------------------------------------------------------------------------------------------------------------------- 
+            LEFT --------------------------------------------------------------------------------------------- -->
+            <div class="card-element card-content-left">
+                <div class="card-top-brand">
+                     <h1 data-i18n="name_title">Georgia Fonseca</h1>
+                    <small data-i18n="name_subtitle">MSc in Artificial Intelligence</small>
+                </div>
+
+                <section style="padding-top: 1rem; font-size: 1.2; padding-top: 2rem; text-align: justify;">
+                    <p data-i18n="intro_1">Welcome to my portfolio,</p>
+                    <p data-i18n="intro_2">
+                        I’m Georgia Fonseca, a machine learning and software engineer specializing in generative AI.
+                        My work ranges from research-driven prototypes to production systems and end-to-end application development.
+                    </p>
+                    <p data-i18n="intro_3">
+                        I am proficient in Python, JavaScript, HTML, CSS, and R, and I am also experienced in SQL and Django.
+                        Currently, I am developing skills in Node.js and React.
+                    </p>
+                </section>             
+
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;">
+                    <span>See and download my complete</span>
+                    <a href="./pdfs/CV.pdf" target="_blank"><span>CV</span></a>
+                </div>
+            </div>
+
+              <!-- RIGHT --------------------------------------------------------------------------------------------- 
+            ------------------------------------------------------------------------------------------------------------------------------- 
+            RICHT --------------------------------------------------------------------------------------------- -->
+
+            <div class="card-element card-content-right">
+
+                <div class="projects-list">
+                    <div class="projects-title">
+                        <span data-i18n="projects_title">Projects</span>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/summarization.html">
+                            <span data-i18n="project_1">
+                                Machine Summarization Pipelines with Different Transformer Models
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/compvision_robot.html">
+                            <span data-i18n="project_2">
+                                Integration of Computer Vision and Reinforcement Learning for Teaching Robots to Navigate a Room
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/eeg_chatgpt.html">
+                            <span data-i18n="project_3">
+                                Modulating Chat GPT with Mental Data from EEG
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/web_phonology.html">
+                            <span data-i18n="project_4">
+                                Interactive Website for Phonology Students
+                            </span>
+                        </a>
+                    </div>
+                    <div class="projects-elements">
+                        <a href="./projects/acoustic_analysis.html">
+                            <span data-i18n="project_5">
+                                Acoustic Analysis of Accent in Second-Language English Speakers
+                            </span>
+                        </a>
+                        <br>
+                    </div>
+                </div>
+
+
+
+                <div class="education-and-certificates"></div>
+                    <div class="projects-title">
+                        <span data-i18n="education_title">Education</span>
+                    </div>
+                    <p data-i18n="education_msc">
+                        MSc in Artificial Intelligence at Vrije University Amsterdam
+                    </p>
+                    <p data-i18n="education_ba">
+                        BA in Cognitive Linguistics, minor in AI at Leiden University
+                    </p>
+                </div>
+
+                   
+  <!-- BOTTOM BAR --------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------- 
+ BOTTOM BAR --------------------------------------------------------------------------------------------- -->
+
+            <div class="card-element card-bottom">
+
+                <!-- LANG SWITCHER -->
+                <div class="lang-switcher" aria-label="Select language">
+                    <button type="button" class="lang-option" data-lang="en">EN</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="nl">NL</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="pt">PT</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="es">ES</button>
+                    <span class="lang-separator">|</span>
+                    <button type="button" class="lang-option" data-lang="fr">FR</button>
+                </div>
+                
+
+<!--                 
+                <div class="projects-elements">
+                    <a id="vis_button" style="display:none; font-size:0.9rem;"
+                        onclick="localStorage.setItem('visitedTimes', 0); this.style.display = 'none';"><span>TURN
+                            TYPING ANIMATION ON</span></a>
+                </div>
+
+
+                <!-- ICON BUTTONS -->
+                <div class="card-bottom-buttons">
+                    <span><a aria-label="Gmail" href="mailto: info@georgiafonseca.com" target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="GMAIL LOGO."
+                                srcset="https://mailmeteor.com/logos/assets/SVG/Gmail_Logo.svg">
+                        </a>
+                    </span>
+    
+                    <span><a aria-label="LinkedIn" href="linked in linkk " target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="LINKEDIN LGO"
+                                srcset="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg">
+                        </a>
+                    </span>
+
+                    <span><a aria-label="LinkedIn" href="linked in linkk " target="_blank"
+                            style="text-decoration: none;">
+                            <img class="image-content  lazy-load" alt="LINKEDIN LGO"
+                                srcset="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
+
+
+
+I can this to have a Mondriaan midcentury modern look
+
+
+

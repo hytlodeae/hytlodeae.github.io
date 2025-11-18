@@ -1,0 +1,474 @@
+/* Inspired by Mondriaan */
+
+/* Root / global ------------------------------------------------------------ */
+
+:root {
+    
+    --bg: #f1ece4;
+    --bg-elevated: #fdfaf3;
+    --bg-elevated-soft: #f7f1e6;
+
+    --col-black: #111111;
+    --col-red: #d40920;
+    --col-blue: #004ba8;
+    --col-yellow: #f4c300;
+    --col-cream: #fdfaf3;
+
+    --accent: #d40920;
+    --accent-soft: rgba(212, 9, 32, 0.18);
+    --accent-strong: #b3071c;
+
+    --font-size-base: 1.25rem; /* change only this to scale the whole site */
+
+    --text-main: #111111;
+    --text-soft: #4b4b4b;
+
+    --border-subtle: #111111;
+    --shadow-soft: 0 16px 28px rgba(0, 0, 0, 0.25);
+
+    --radius-lg: 0; /* Mondriaan = sharp corners */
+    --radius-md: 0;
+    --radius-sm: 0;
+
+    --transition-fast: 160ms ease-out;
+    --transition-med: 220ms ease-out;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);  /* this makes 1rem = --font-size-base */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background: var(--bg);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout ------------------------------------------------------------------- */
+
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+/* Main Mondriaan grid frame */
+.card {
+    width: 100%;
+    max-width: 80%;
+    /* max-height: ;   */
+    min-height: 70vh; /* or 100vh */
+    height: auto;       
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+    grid-template-rows: auto auto;
+    gap: 6px; /* thick black grid lines */
+    padding: 6px;
+    border-radius: 0;
+    background: var(--col-black);
+    border: 6px solid var(--col-black);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Card elements ------------------------------------------------------------ */
+
+.card-element {
+    background: var(--bg-elevated);
+    border-radius: 0;
+    padding: 1.5rem 1.75rem;
+    border: 4px solid var(--col-black);
+    position: relative;
+    overflow: hidden;
+}
+
+/* kill previous subtle accent line */
+.card-element::before {
+    content: none;
+}
+
+.card-content-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: var(--col-cream);
+}
+
+.card-content-right {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background: var(--col-yellow);
+}
+
+.card-bottom {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.25rem 1.75rem;
+    background: var(--col-blue);
+    color: #ffffff;
+    border-color: var(--col-black);
+}
+
+.card-archive {
+    grid-column: 1 / -1;
+}
+
+/* Branding / intro --------------------------------------------------------- */
+
+.card-top-brand h1 {
+    margin: 0;
+    font-size: 1.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.card-top-brand small {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+
+.card-top-brand {
+    position: relative;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+/* bold red block underline */
+.card-top-brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 96px;
+    height: 8px;
+    background: var(--col-red);
+}
+
+.intro-text,
+section[data-i18n] {
+    padding-top: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-soft);
+    text-align: justify;
+}
+
+.intro-text strong {
+    color: var(--text-main);
+}
+
+/* Projects list ------------------------------------------------------------ */
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.projects-title {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.projects-title h2,
+.projects-title span {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.projects-elements {
+    position: relative;
+    padding: 0.35rem 0;
+}
+
+/* flatter link style, no glow */
+.projects-elements a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    transition: color var(--transition-med), transform var(--transition-fast);
+}
+
+.projects-elements a span {
+    position: relative;
+}
+
+/* solid black underline on hover */
+.projects-elements a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    width: 0;
+    height: 2px;
+    background: var(--col-black);
+    transition: width var(--transition-med);
+}
+
+/* vertical red accent bar */
+.projects-elements::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 3px;
+    height: 0;
+    background: var(--col-red);
+    transition: height var(--transition-med);
+}
+
+.projects-elements a:hover span::after,
+.projects-elements a:focus-visible span::after {
+    width: 100%;
+}
+
+.projects-elements a:hover,
+.projects-elements a:focus-visible {
+    color: var(--col-black);
+    transform: translateX(2px);
+}
+
+.projects-elements:hover::before,
+.projects-elements:focus-within::before {
+    height: 100%;
+}
+
+/* Project detail text ------------------------------------------------------ */
+
+.project-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding-top: 1.4rem;
+    color: var(--text-soft);
+    text-align: justify;
+}
+
+.project-text p {
+    margin-top: 0;
+    margin-bottom: 0.85rem;
+}
+
+/* Education block as its own panel line ----------------------------------- */
+
+.education-and-certificates {
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    border-top: 4px solid var(--col-black);
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.education-and-certificates span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+/* Bottom bar --------------------------------------------------------------- */
+
+.card-bottom-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-bottom a span {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.card-bottom .projects-elements a {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* Icon buttons: flat, no glow --------------------------------------------- */
+
+.image-content {
+    width: 26px;
+    height: 26px;
+    display: block;
+    filter: grayscale(1);
+    opacity: 0.9;
+    transition: transform var(--transition-med), opacity var(--transition-fast);
+}
+
+.card-bottom-buttons a:hover .image-content,
+.card-bottom-buttons a:focus-visible .image-content {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.03);
+}
+
+/* Typing toggle button ----------------------------------------------------- */
+
+#vis_button {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.2rem 0;
+    transition: opacity var(--transition-med), transform var(--transition-fast);
+}
+
+#vis_button:hover,
+#vis_button:focus-visible {
+    transform: translateY(-1px);
+    opacity: 1;
+}
+
+/* Links / focus states ----------------------------------------------------- */
+
+a {
+    color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--col-red);
+    outline-offset: 3px;
+}
+
+/* Language switcher -------------------------------------------------------- */
+
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.lang-option {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity var(--transition-med), transform var(--transition-fast);
+}
+
+.lang-option:hover,
+.lang-option:focus-visible {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.lang-option.is-active {
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.lang-separator {
+    opacity: 0.6;
+}
+
+/* Scrollbar (desktop) ------------------------------------------------------ */
+
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--col-black);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--col-red);
+    }
+}
+
+/* Responsive --------------------------------------------------------------- */
+
+@media (max-width: 840px) {
+    .main-container {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
+        max-width: 640px;
+    }
+
+    .card-content-left,
+    .card-content-right,
+    .card-archive {
+        grid-column: 1 / -1;
+    }
+
+    .card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-top-brand h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .card {
+        padding: 4px;
+        gap: 4px;
+        border-width: 4px;
+    }
+
+    .card-element {
+        padding: 1.1rem 1.2rem;
+        border-width: 3px;
+    }
+
+    .intro-text,
+    .project-text {
+        font-size: 0.9rem;
+    }
+
+    .card-bottom-buttons {
+        gap: 0.7rem;
+    }
+}
